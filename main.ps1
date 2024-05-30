@@ -1,6 +1,6 @@
 ﻿$rootPath = 'C:/Ruta/del/Script'; ### <<<<<<<<<<<<<< IMPORTANT
 $listSRVs = Get-Content -Path "$rootPath\servers.txt";
-$nameService = "services"; ### <<<<<<<<<<<<<< IMPORTANT
+$nameProcess = "services"; ### <<<<<<<<<<<<<< IMPORTANT
 
 
 $pathCSV = "$rootPath\output.csv";
@@ -17,8 +17,8 @@ foreach($srv in $listSRVs)
     try
     {
         $process = Invoke-Command -Session $session -ScriptBlock {
-            param($nameService);Get-Process -Name $nameService;
-        } -ErrorAction Stop -ArgumentList $nameService;
+            param($nameProcess);Get-Process -Name $nameProcess;
+        } -ErrorAction Stop -ArgumentList $nameProcess;
         
         $agentID = $process.Id;
         $agentName = $process.Name;
